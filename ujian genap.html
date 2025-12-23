@@ -1,0 +1,96 @@
+<html>
+<head></head>
+<body>
+<script>
+	let transaksi = Number(prompt("Masukkan jumlah transaksi"));
+	let data_transaksi = [];
+
+	let total_transaksi = 0;
+	let total_diskon = 0;
+	let totalPembayaran_akhir = 0;
+
+	for (let i = 1; i <= transaksi; i++) {
+
+		let jenis_baju = prompt("Masukkan jenis baju");
+		let harga_satuan = Number(prompt("Masukkan harga satuan"));
+		let jumlah_baju = Number(prompt("Masukkan jumlah baju"));
+		let sesi_pembelian = prompt("Masukkan sesi (sesi pagi / sesi siang / sesi malam)");
+
+		let total_harga = harga_satuan * jumlah_baju;
+		let diskon = 0;
+
+		if (sesi_pembelian === "pagi") {
+			if (jumlah_baju <= 10) {
+			diskon = 0;
+		} 
+	else if (jumlah_baju <= 20) {
+			let diskon1 = 10 * harga_satuan * 0.0
+			let sisa = (jumlah_baju - 10) * harga_satuan * 0.10;
+			diskon = diskon1 + sisa;
+		} 
+		else {
+			let diskon1 = 10 * harga_satuan * 0.05;
+			let diskon2 = 10 * harga_satuan * 0.12;
+			let sisa = (jumlah_baju - 20) * harga_satuan * 0.22;
+			diskon = diskon1 + diskon2 + sisa;
+		}
+	}
+
+	else if (sesi_pembelian === "malam") {
+		if (jumlah_baju <= 10) {
+			diskon = total_harga * 0.05;
+		} 
+		else if (jumlah_baju <= 20) {
+			let diskon1 = 10 * harga_satuan * 0.10;
+			let sisa = (jumlah_baju - 10) * harga_satuan * 0.25;
+			diskon = diskon1 + sisa;
+		} 
+		else {
+			let diskon1 = 10 * harga_satuan * 0.10;
+			let diskon2 = 10 * harga_satuan * 0.25;
+			let sisa = (jumlah_baju - 20) * harga_satuan * 0.35;
+			diskon = diskon1 + diskon2 + sisa;
+		}
+	}
+
+	else if (sesi_pembelian === "siang") {
+		diskon = 0;
+	}
+
+
+		let total_bayar = total_harga - diskon;
+
+		total_transaksi += total_harga;
+		total_diskon += diskon;
+		totalPembayaran_akhir += total_bayar
+		
+		data_transaksi.push({
+			jenis_baju,
+			harga_satuan,
+			jumlah_baju,
+			sesi_pembelian,
+			total_harga,
+			diskon,
+			total_bayar
+		});
+
+		console.log(`=== Transaksi ke-${i} ===`);
+		console.log("Jenis baju:", jenis_baju);
+		console.log("Harga satuan:", harga_satuan);
+		console.log("Jumlah:", jumlah_baju);
+		console.log("Sesi:", sesi_pembelian);
+		console.log("Total harga: Rp", total_harga);
+		console.log("Diskon: Rp", diskon);
+		console.log("Total bayar: Rp", total_bayar);
+	}
+
+		console.log("=== REKAP PENJUALAN ===");
+		console.log("Total transaksi :", total_transaksi);
+		console.log("Total diskon:", total_diskon);
+		console.log("Total pembayaran akhir:", totalPembayaran_akhir);
+		console.log("Data transaksi:", data_transaksi);
+</script>
+
+</html>
+</body>
+</html>
